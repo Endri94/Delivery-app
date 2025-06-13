@@ -1,0 +1,302 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Make sure textarea without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+
+/* styles */
+body {
+    /* position: relative; */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #d5d5d5;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 10px;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+.app {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 20px;
+    padding: 20px;
+}
+
+@media(max-width: 640px) {
+    .app {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    position: relative;
+    max-width: 275px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px rgba(36, 226, 240, 0.842);
+    transition: all 0.3s ease-in-out;
+}
+
+.card__title-gray {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.card__title-strong {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 0.1rem;
+    color: #111827;
+}
+
+
+.card__edit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid #0099ff;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.card__edit-button:hover {
+    background-color: #0099ff;
+    color: white;
+}
+
+.card__edit-button:active {
+    background-color: #034e80;
+    color: white;
+}
+
+.card--delivered {
+    outline: 2px solid rgb(1, 212, 1);
+}
+
+.card--cancelled {
+    opacity: 0.5;
+}
+
+.modal-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: -100;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-form--active {
+    opacity: 1;
+    z-index: 100000;
+    transition: opacity 0.3s ease-in-out;
+
+}
+
+.form-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form__input {
+    width: 100%;
+    border: 1px solid #0099ff;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.form__select {
+    width: 100%;
+    border: 1px solid #0099ff;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.form__button {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #034e80;
+    border-radius: 8px;
+}
+
+
+.closeModal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: opacity ease 0.3s;
+}
+
+.closeModal:hover {
+    opacity: 1;
+}
+
+.closeModal::before,
+.closeModal::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #000;
+}
+
+.closeModal::before {
+    transform: rotate(45deg);
+}
+
+.closeModal::after {
+    transform: rotate(-45deg);
+}
+
+.calculate-wrapper {
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.calculate__descr {
+    display: block;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
